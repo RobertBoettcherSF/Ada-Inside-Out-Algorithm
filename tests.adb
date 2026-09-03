@@ -210,6 +210,7 @@ begin
       begin
          declare
             New_G : constant Grammar := EM_Step (G, O);
+            pragma Unreferenced (New_G);
          begin
             null;
          end;
