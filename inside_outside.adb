@@ -12,7 +12,7 @@ package body Inside_Outside is
       --  Normalize sequence indices to 1 .. T to simplify algorithm logic
       O     : constant Observation_Sequence (1 .. T) := O_Raw;
       Alpha : Dynamic_Matrix (1 .. G.Num_NT, 1 .. T, 1 .. T) :=
-                (others => (others => (others => 0.0)));
+                [others => [others => [others => 0.0]]];
    begin
       --  Base cases (Sequence length 1)
       --  Alpha_j(p, p) = e(N_j, o_p)
@@ -67,7 +67,7 @@ package body Inside_Outside is
    is
       T    : constant Sequence_Index := O_Raw'Length;
       Beta : Dynamic_Matrix (1 .. G.Num_NT, 1 .. T, 1 .. T) :=
-               (others => (others => (others => 0.0)));
+               [others => [others => [others => 0.0]]];
    begin
       --  Base case
       --  Beta_Start(1, T) = 1.0, all others 0.0
@@ -158,9 +158,9 @@ package body Inside_Outside is
       type Count_Array_Unary  is array (1 .. G.Num_NT, 1 .. G.Num_T) of Real;
       type Total_Count_Array  is array (1 .. G.Num_NT) of Real;
 
-      Counts_Bin : Count_Array_Binary := (others => (others => (others => 0.0)));
-      Counts_Un  : Count_Array_Unary  := (others => (others => 0.0));
-      Totals     : Total_Count_Array  := (others => 0.0);
+      Counts_Bin : Count_Array_Binary := [others => [others => [others => 0.0]]];
+      Counts_Un  : Count_Array_Unary  := [others => [others => 0.0]];
+      Totals     : Total_Count_Array  := [others => 0.0];
    begin
       if Prob_Total = 0.0 then
          raise Computation_Error with "Sequence probability is zero, EM step impossible.";
