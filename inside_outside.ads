@@ -19,8 +19,8 @@ is
    --  Grammar representation (Probabilistic Context-Free Grammar in Chomsky Normal Form)
    type Grammar (Num_NT : Non_Terminal_Id; Num_T : Terminal_Id) is record
       Start_Symbol : Non_Terminal_Id := 1;
-      Unary        : Unary_Prob_Matrix (1 .. Num_NT, 1 .. Num_T) := (others => (others => 0.0));
-      Binary       : Binary_Prob_Matrix (1 .. Num_NT, 1 .. Num_NT, 1 .. Num_NT) := (others => (others => (others => 0.0)));
+      Unary        : Unary_Prob_Matrix (1 .. Num_NT, 1 .. Num_T) := [others => [others => 0.0]];
+      Binary       : Binary_Prob_Matrix (1 .. Num_NT, 1 .. Num_NT, 1 .. Num_NT) := [others => [others => [others => 0.0]]];
    end record;
 
    --  Matrix to store Inside and Outside probabilities (Non-Terminal, Start_Index, End_Index)
